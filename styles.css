@@ -1,3 +1,9 @@
+.title-container {
+    text-align: center;
+    width: 510px;
+    margin-top: 1rem;
+}
+
 .letter-yellow {
     color: #c79c2e;
 }
@@ -5,21 +11,11 @@
 .letter-green {
     color: #51b36e;
 }
-
 .letter-red {
     color: #943e3c;
 }
 
-.title-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-
-.game-container {
+.app-container {
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -29,14 +25,14 @@
     align-items: center;
 }
 
-.row {
+.tile-row {
     margin-bottom: 1rem;
     justify-content: center;
     display:flex;
     box-sizing: border-box;
 }
 
-.column {
+.tile-column {
     background-color: #f4f3f1;
     color: #252525;
     height: 40px;
@@ -46,13 +42,30 @@
     font-size: 20px;
     align-items: center;
     justify-content: center;
-    display:flex;    
+    display:flex;
 }
 
-.tile-container {
-    text-align: center;
-    width: 510px;
-    margin-top: 1rem;
+.typing {
+    border: 3px solid #252525;
+}
+
+.disabled {
+    border: 1px solid #252525;
+}
+
+.right {
+    background-color: #51b36e;
+    color: #f4f3f1;
+}
+
+.wrong {
+    background-color: #943e3c;
+    color: #f4f3f1;
+}
+
+.displaced {
+    background-color: #c79c2e;
+    color: #f4f3f1;
 }
 
 .keyboard-container {
@@ -67,10 +80,13 @@
     margin-bottom: 0.5rem;
     justify-content: center;
     display: flex;
-    
 }
 
-.keyboard-row-container button {
+.keyboard-row-container.notAlphabetic {
+    width:100%
+}
+
+.keyboard-row-container:not(.notAlphabetic) button {
     width: 8%;
     height: 40px;
     border-radius: 0.25rem;
@@ -78,12 +94,4 @@
     border: 1px solid #252525;
     font-size: 16px;
     cursor: pointer;
-}
-
-.typing {
-    border: 3px solid #252525;
-}
-
-.disabled {
-    border: 1px solid #252525;
 }

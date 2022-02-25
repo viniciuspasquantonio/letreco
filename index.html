@@ -8,28 +8,27 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="game-container">
+    <div class="app-container">
         <div class="title-container">
             <h1>
                 <span>L</span>
                 <span>E</span>
-                <span>T</span>
-                <span class="letter-red">R</span>
-                <span class="letter-green">E</span>
+                <span class="letter-yellow">T</span>
+                <span>R</span>
+                <span class="letter-red">E</span>
                 <span>C</span>
-                <span class="letter-yellow">O</span>
-
+                <span class="letter-green">O</span>
             </h1>
+                
         </div>
-        <div class="tile-container">
-            
-        </div>
-        <div class="keyboard-container">
-            <div class="keyboard-row-container " id="first-row-container"></div>
-            <div class="keyboard-row-container " id="second-row-container"></div>
-            <div class="keyboard-row-container " id="third-row-container"></div>
+        <div class="tile-container"></div>
+        <div class="keybord-container">
+            <div class="keyboard-row-container notAlphabetic" id="backspaceAndEnterRow"></div>
+            <div class="keyboard-row-container" id="keyboardFirstRow"></div>
+            <div class="keyboard-row-container" id="keyboardSecondRow"></div>
+            <div class="keyboard-row-container" id="keyboardThirdRow"></div>
         </div>
     </div>
-    <script src="app.js" ></script>
+    <script src="app.js"></script>
 </body>
 </html>

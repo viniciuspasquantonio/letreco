@@ -12,11 +12,7 @@ const rows = 6;
 const columns = 5;
 let currentRow = 0;
 let currentColumn = 0;
-let letreco = "LETRA";
-let letrecoMap = {};
-for (let index = 0; index < letreco.length; index++) {
-  letrecoMap[letreco[index]] = index;
-}
+let letreco = "TESTE";
 const guesses = [];
 
 for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
@@ -42,48 +38,45 @@ const checkGuess = () => {
   if (guess.length !== columns) {
     return;
   }
-
+  let letrecoLocal = [...letreco]
   var currentColumns = document.querySelectorAll(".typing");
   for (let index = 0; index < columns; index++) {
     const letter = guess[index];
-    if (letrecoMap[letter] === undefined) {
-        currentColumns[index].classList.add("wrong")
+    if (letrecoLocal.indexOf(letter) < 0) {
+      currentColumns[index].classList.add("wrong")
     } else {
-        if(letrecoMap[letter] === index) {
-            currentColumns[index].classList.add("right")
-        } else {
-            currentColumns[index].classList.add("displaced")
-        }
+      if (letrecoLocal[index] === letter) {
+        currentColumns[index].classList.add("right")
+      } else {
+        currentColumns[index].classList.add("displaced")
+      }
     }
   }
 
-  if(guess === letreco) {
-      window.alert("tu é demais, simplesmente o detetivao do entreterimento!")
-      return
-  } {
-      if(currentRow === rows -1) {
-          window.alert("Errrrrrou!")
-      } else {
-          moveToNextRow()
-      }
+  if (guess !== letreco) {
+    if (currentRow === rows - 1) {
+      window.location.reload()
+    } else {
+      moveToNextRow()
+    }
   }
 };
 
 const moveToNextRow = () => {
-    var typingColumns = document.querySelectorAll(".typing")
-    for (let index = 0; index < typingColumns.length; index++) {
-        typingColumns[index].classList.remove("typing")
-        typingColumns[index].classList.add("disabled")
-    }
-    currentRow++
-    currentColumn=0
+  var typingColumns = document.querySelectorAll(".typing")
+  for (let index = 0; index < typingColumns.length; index++) {
+    typingColumns[index].classList.remove("typing")
+    typingColumns[index].classList.add("disabled")
+  }
+  currentRow++
+  currentColumn = 0
 
-    const currentRowEl = document.querySelector("#row"+currentRow)
-    var currentColumns = currentRowEl.querySelectorAll(".tile-column")
-    for (let index = 0; index < currentColumns.length; index++) {
-        currentColumns[index].classList.remove("disabled")
-        currentColumns[index].classList.add("typing")
-    }
+  const currentRowEl = document.querySelector("#row" + currentRow)
+  var currentColumns = currentRowEl.querySelectorAll(".tile-column")
+  for (let index = 0; index < currentColumns.length; index++) {
+    currentColumns[index].classList.remove("disabled")
+    currentColumns[index].classList.add("typing")
+  }
 }
 
 const handleKeyboardOnClick = (key) => {
@@ -113,13 +106,13 @@ createKeyboardRow(keysSecondRow, keyboardSecondRow);
 createKeyboardRow(keysThirdRow, keyboardThirdRow);
 
 const handleBackspace = () => {
-  if(currentColumn === 0){
-      return
+  if (currentColumn === 0) {
+    return
   }
 
   currentColumn--
   guesses[currentRow][currentColumn] = ""
-  const tile = document.querySelector("#row"+currentRow+"column"+currentColumn)
+  const tile = document.querySelector("#row" + currentRow + "column" + currentColumn)
   tile.textContent = ""
 };
 
@@ -134,12 +127,12 @@ enterButton.textContent = "ENTER";
 backspaceAndEnterRow.append(enterButton);
 
 document.onkeydown = function (evt) {
-    evt = evt || window.evt
-    if(evt.key === "Enter"){
-        checkGuess();
-    } else if (evt.key === "Backspace") {
-        handleBackspace()
-    } else {
-        handleKeyboardOnClick(evt.key.toUpperCase())
-    }
+  evt = evt || window.evt
+  if (evt.key === "Enter") {
+    checkGuess();
+  } else if (evt.key === "Backspace") {
+    handleBackspace()
+  } else {
+    handleKeyboardOnClick(evt.key.toUpperCase())
+  }
 }
